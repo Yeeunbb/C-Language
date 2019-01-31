@@ -1,0 +1,46 @@
+/*
+ * structure.cpp
+ *
+ *  Created on: 2018. 9. 27.
+ *      Author: ykoou
+ */
+
+#include<iostream>
+#include<cstring>
+
+using namespace std;
+
+struct date
+{
+	int year;
+	int month;
+	int day;
+};
+
+struct student
+{
+	int num;
+	char name[10];
+	double grade;
+	struct date* pDate;
+};
+
+int main()
+{
+	struct date d = {1999,9,26};
+	struct student s {20, "Kim", 4.3};
+
+	s.pDate = &d;
+
+	cout << "Age: " <<s.num << endl;
+	cout<< "Name: " << s.name << endl;
+	cout<< "Grade: " <<s.grade << endl;
+	cout << "===========================" << endl;
+
+	cout << "Year: " << s.pDate ->year << endl;
+	cout<< "Month: " <<s.pDate ->month << endl;
+	cout << "Day : " << s.pDate->day << endl;
+	cout << "======================================"<< endl;
+
+	return 0;
+}
