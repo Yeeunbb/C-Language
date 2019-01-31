@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class String
+{
+private:
+	char* str1;
+
+public:
+	String (char* str);
+	String ();
+	friend String operator+(String& str2, String& str3);
+	void display();
+};
+
+String operator+(String& str2, String& str3)
+{
+	String n;
+	//strcpy(n.str1, str2.str1);
+	n.str1 = strcat(str2.str1, str3.str1);
+	return n.str1;
+}
+
+String::String(char* str)
+{
+	str1 = str;
+}
+
+String::String()
+{
+	str1 = NULL;
+}
+
+void String::display()
+{
+	cout << str1;
+}
+
+int main()
+{
+	String c1("안녕"), c2("난예은"), c3;
+
+	c3 = c1 + c2;
+
+	c3. display();
+
+	return 0;
+
+}
