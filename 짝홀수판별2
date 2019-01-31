@@ -1,0 +1,86 @@
+/*
+ * divide.cpp
+ *
+ *  Created on: 2018. 9. 20.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+
+using namespace std;
+
+int* arrayCreate(int size);
+void arrayInput(int*arr, int size);
+bool even(int n);
+int* createEvenMaskedArray(int* arr, int size);
+void evenMask(int* element, bool even);
+
+int main(int argc, char** argv)
+{
+	int *array, *maskedArray;
+	int size;
+
+	cout << "Enter size of array: ";
+	cin >> size;
+
+	array = arrayCreate(size);
+	arrayInput(array, size);
+	maskedArray = createEvenMaskedArray(array, size);
+
+	for(int i = 0; i< size; i++)
+	{
+		if(maskedArray[i] == 1)
+		{
+			cout << array[i] << ":even, ";
+		}
+		else
+		{
+			cout << array[i] << ":odd, ";
+		}
+	}
+	cout << endl;
+
+	delete[] array;
+	delete[] maskedArray;
+
+	return 0;
+}
+
+int* arrayCreate(int size)
+{
+	return new int[size];
+}
+
+void arrayInput(int* arr, int size)
+{
+	for(int i=0; i<size; i++)
+	{
+		cin >> arr[i];
+	}
+}
+
+bool even(int n)
+{
+	if(n%2==0)
+		return true;
+	else
+		return false;
+}
+
+int* createEvenMaskedArray(int* arr, int size)
+{
+	int*p=new int[size];
+	for(int i=0; i<size; i++)
+	{
+		evenMask(&p[i], even(arr[i]));
+	}
+	return p;
+}
+
+void evenMask(int* element, bool even)
+{
+	if(even == true)
+		*element = 1;
+	else
+		*element = 0;
+}
