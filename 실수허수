@@ -1,0 +1,87 @@
+/*
+ * Complex.cpp
+ *
+ *  Created on: 2018. 11. 15.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+#include <String>
+
+using namespace std;
+
+class Complex
+{
+public:
+	Complex();
+	Complex(double real, double img);
+	~Complex();
+	double getReal();
+	double getImg();
+	Complex add(const Complex& operand);
+	void print();
+
+private:
+	int real;
+	int img;
+
+};
+int main()
+{
+	Complex x(2, 3);
+	Complex y(4, 6);
+
+	cout << "1st complex number: ";
+	x.print();
+
+	cout << endl << "2nd complex number: ";
+	y.print();
+
+	cout << endl << "x + y = ";
+	(x.add(y)).print();
+
+	return 0;
+}
+
+Complex::Complex()
+{
+	real = 0;
+	img = 0;
+}
+
+Complex::Complex(double real, double img)
+{
+	this->real = real;
+	this->img = img;
+}
+
+Complex::~Complex()
+{
+
+}
+
+double Complex::getReal()
+{
+	return real;
+}
+
+double Complex::getImg()
+{
+	return img;
+}
+
+Complex Complex::add(const Complex& operand)
+{
+	Complex temp;
+	temp.real = real + operand.real;
+	temp.img = img + operand.img;
+	return temp;
+}
+
+void Complex::print()
+{
+	cout<<getReal();
+	cout << " + ";
+	cout<<getImg();
+	cout << "i";
+}
