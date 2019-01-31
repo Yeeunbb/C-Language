@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string stringInputAnnounce();
+string inputString();
+
+void add(string& s1, string s2);
+void printString(string prefix, string str);
+
+int main()
+{
+	string s1, s2, result;
+
+	s1 = stringInputAnnounce();
+	s2 = stringInputAnnounce();
+
+	result = s1;
+	add(result, s2);
+
+	printString("result: ", result);
+
+	cout << "result[0]: " << result [0] << endl;
+	cout << "result.at(0): " << result.at(0) << endl;
+	cout << "result.back(): " << result.back() << endl;
+	cout << "result.front(): " << result.front() << endl;
+
+	string result2 = s2;
+	cout << "result2: " << result2 << endl;
+
+	result2 += s1;
+	cout << "result2 += s1: " << result2 << endl;
+
+	result2.append(s2);
+	cout << "result2.append(s2): " << result2 << endl;
+
+	result2.push_back('!');
+	cout << "result2.push_back(\'!\'): " << result2 << endl;
+
+	cout << "result2.find(s2): " << result2.find(s2) << endl;
+	cout << "result2[result2.find(s2)]: " << result2[result2.find(s2)] << endl;
+	cout << "&(result2[result2.find(s2)]): " << &(result2[result2.find(s2)]) << endl;
+//char buf[] =" test test", s 부터 출력하고 싶다면? cout << &(buf[2]) << endl; 시작주소만 바꿔주면 문자열 다룰수있다!
+	cout << "result2.rfind(s2): " << result2.rfind(s2) << endl;
+	cout << "result2[result2.rfind(s2)]: " << result2[result2.rfind(s2)] << endl;
+	cout << "&(result2[result2.rfind(s2)]): " << &(result2[result2.rfind(s2)]) << endl;
+
+	cout << "result2.substr(result2.find(s1)): " << result2.substr(result2.find(s1)) << endl;
+	cout << "result2.substr(result2.find(s1), s1.length()): " << result2.substr(result2.find(s1), s1.length()) << endl;
+	cout << "result2.substr(result2.find(s1), s1.lengh() + 3): " << result2.substr(result2.find(s1), s1.length() + 3) << endl;
+	cout << "result2.substr(0, 3): " << result2.substr(0, 3) << endl;
+	cout << "result2.substr(5): " << result2.substr(5) << endl;
+
+	result2. assign(s2);
+	cout << "result2.assign(s2): " << result2 << endl;
+
+	result2.pop_back();
+	cout << "result2.pop_back(): " << result2 << endl;
+
+	return 0;
+}
+
+string stringInputAnnounce() //문자열을 입력을 요구하는 함수
+{
+	cout << "Please enter string: ";
+	return inputString();
+}
+
+string inputString() //문자열을 입력받는 합수
+{
+	string str; //int a; 와 같은 맥락
+	cin >> str;
+	return str;
+}
+
+void printString(string prefix, string str)
+{
+	cout << prefix << str << endl;
+}
+
+void add (string& s1, string s2)
+{
+	s1 = s1 + s2;
+}
