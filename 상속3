@@ -1,0 +1,120 @@
+#include <iostream>
+
+using namespace std;
+
+class Shape
+{
+public:
+	Shape();
+	virtual ~Shape();
+	void setOrigin(int x, int y);
+	virtual void draw();
+
+protected:
+	int x, y;
+
+};
+
+class Rectangle: public Shape
+{
+public:
+	Rectangle();
+	~Rectangle();
+	void setWidth(int width);
+	void setHeight(int height);
+	void draw();
+
+private:
+	int width, height;
+};
+
+class Circle: public Shape
+{
+public:
+	Circle();
+	~Circle();
+	void setRadius(int radius);
+	void draw();
+
+private:
+	int radius;
+};
+
+int main()
+{
+	Shape* ps = new Rectangle();
+	ps->draw();
+	delete ps;
+
+	ps = new Circle();
+	ps->draw();
+	delete ps;
+
+	return 0;
+}
+
+Shape::Shape()
+{
+	cout << "Shape Constructor" << endl;
+}
+
+Shape::~Shape()
+{
+	cout << "Shape Destructor" << endl;
+}
+
+void Shape::setOrigin(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+void Shape::draw()
+{
+	cout << "Shape Draw" << endl;
+}
+
+Rectangle::Rectangle()
+{
+	cout << "Rectangle Constructor" << endl;
+}
+
+Rectangle::~Rectangle()
+{
+	cout << "Rectnagle Destructor" << endl;
+}
+
+void Rectangle::setWidth(int width)
+{
+	this->width = width;
+}
+
+void Rectangle::setHeight(int height)
+{
+	this->height = height;
+}
+
+void Rectangle::draw()
+{
+	cout << "Rectangle Draw" << endl;
+}
+
+Circle::Circle()
+{
+	cout << "Circle Constructor" << endl;
+}
+
+Circle::~Circle()
+{
+	cout << "Circle Destructor" << endl;
+}
+
+void Circle::setRadius(int radius)
+{
+	this->radius = radius;
+}
+
+void Circle::draw()
+{
+	cout << "Circle Draw" << endl;
+}
