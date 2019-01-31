@@ -1,0 +1,81 @@
+/*
+ * homework.cpp
+ *
+ *  Created on: 2018. 9. 28.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+struct student
+{
+	int id;
+	char name[10];
+	double grade;
+};
+
+struct student* listCreate(int size);
+void listInput(struct student* list, int size);
+double calcGradeAvg(struct student* list, int size);
+void printList(struct student* list, int size);
+
+int main()
+{
+	int size;
+	struct student* list = NULL;
+
+	cout << "Enter number of students: ";
+	cin >> size;
+
+	list = listCreate(size);
+	listInput(list, size);
+	printList(list, size);
+
+	if(list != NULL)
+		delete[] list;
+
+	return 0;
+}
+
+struct student* listCreate(int size)
+{
+	struct student* Arr;
+	Arr = new struct student[size];
+	return Arr;
+}
+
+void listInput(struct student* list, int size)//구조체배열에 사용자의 입력값 저장
+{
+	for(int i=0; i<size; i++)
+	{
+		cin>>list[i].id;
+		cin>>list[i].name;
+		cin>>list[i].grade;
+	}
+}
+
+double calcGradeAvg(struct student* list, int size)
+{
+	double num=0;
+	for(int i=0; i<size; i++)
+	{
+		num+=list[i].grade;
+	}
+	return num/size;
+}
+
+void printList(struct student* list, int size) //구조체내용 출력함수
+{
+	for(int i=0 ; i<size; i++)
+	{
+		cout<< "id: "<<list[i].id<<endl;
+		cout<< "name: "<<list[i].name<<endl;
+		cout<< "grade: "<<list[i].grade<<endl;
+		cout<<"================================"<<endl;
+
+	}
+		cout<< "Average of grade: "<< calcGradeAvg(list,size)<<endl;
+}
