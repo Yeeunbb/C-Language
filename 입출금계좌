@@ -1,0 +1,79 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2018. 10. 18.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount
+{
+public:
+	void setBalance(int b)
+	{
+		Balance = b;
+	}
+
+	int getBalance()
+	{
+		return Balance;
+	}
+
+	void setMan(string m)
+	{
+		Man = m;
+	}
+
+	string getMan()
+	{
+		return Man;
+	}
+
+	void setAccountNumber(int a)
+	{
+		AccountNumber = a;
+	}
+
+	string getAccountNumber()
+	{
+		return AccountNumber;
+	}
+
+	void deposit(int d)
+	{
+		Balance += d;
+		//return Balance;
+	}
+
+	void withdraw(int w)
+	{
+		Balance -= w;
+	}
+
+	void printBalance()
+	{
+		cout << "Current Balance: " << Balance << endl;
+	}
+
+private:
+	int Balance;
+	string Man;
+	string AccountNumber;
+};
+
+int main()
+{
+	BankAccount account;
+
+	account.setBalance(0);
+	account.deposit(10000);
+	account.printBalance();
+	account.withdraw(4000);
+	account.printBalance();
+
+	return 0;
+}
