@@ -1,0 +1,90 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Animal
+{
+public:
+	Animal();
+	~Animal();
+	void speak();
+	void sleep();
+	void eat();
+
+protected:
+	int age;
+	int weight;
+};
+
+class Dog: public Animal
+{
+public:
+	Dog();
+	~Dog();
+	void wag();
+	void bite();
+	void speak();
+};
+
+int main()
+{
+	Dog dog;
+
+	dog.eat();
+	dog.sleep();
+	dog.speak();
+	dog.wag();
+
+	return 0;
+}
+
+Animal::Animal()
+{
+	cout << "Animal Constructor" << endl;
+}
+
+Animal::~Animal()
+{
+	cout << "Animal Destructor" << endl;
+}
+
+void Animal::speak()
+{
+	cout << "Animal speak()" << endl;
+}
+
+void Animal::sleep()
+{
+	cout << "Animal sleep()" << endl;
+}
+
+void Animal::eat()
+{
+	cout << "Animal eat()" << endl;
+}
+
+Dog::Dog() :Animal()
+{
+	cout << "Dog Constructor" << endl;
+}
+
+Dog::~Dog()
+{
+	cout << "Dog Destructor" << endl;
+}
+
+void Dog::speak()
+{
+	cout << "Dog speak()" << endl;
+}
+
+void Dog::wag()
+{
+	cout << "Dog wag()" << endl;
+}
+
+void Dog::bite()
+{
+	cout << "Dog bite()" << endl;
+}
