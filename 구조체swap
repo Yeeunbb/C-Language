@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+/*typedef struct
+{
+	int x,y;
+}point;
+
+
+struct POINT
+{
+	int x,y;
+};
+
+typedef struct POINT point;
+*/
+struct point
+{
+	int x;
+	int y;
+};
+
+point translate(point p, point delta);
+
+int main()
+{
+	point p = {2,3};
+
+	point delta;
+	delta.x = 10;
+	delta.y=10;
+
+	point result;
+
+	result = translate(p, delta);
+
+	cout << "New point's coordinate is (" << result.x << ", " << result.y << ")" <<endl;
+
+	return 0;
+}
+
+point translate(point p, point delta)
+{
+	point newP;
+
+	newP.x= p.x + delta.x;
+	newP.y = p.y + delta.y;
+
+	return newP;
+}
