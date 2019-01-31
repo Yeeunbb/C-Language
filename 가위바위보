@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int com_num, my_num, win_score,i;
+	int win_count=0, loss_num=0;
+
+	printf("몇 판? 몇 판 승이 최종 승리?\n");
+	fflush(stdout);
+	scanf("%d %d", &i, &win_score);
+
+	while (win_count+loss_num<i)
+	{
+		do
+		{ printf("%d-- 승 : %d, 패: %d --\n",win_count+loss_num,win_count,loss_num);
+			printf("  가위 - 0\n");
+			printf("  바위 - 1\n");
+			printf("  보 - 2\n");
+			printf("하나를 선택하세요.\n");
+			fflush(stdout);
+			scanf("%d",&my_num);
+			} while (my_num<0||my_num>2);
+	if(my_num==0)
+		printf("나 : 가위\n ");
+	else if(my_num==1)
+		printf("나 : 바위\n");
+	else
+		printf("나 : 보\n");
+
+	com_num = rand() % 3;
+
+	if (com_num==0)
+		printf("컴퓨터 : 가위\n");
+	else if (com_num==1)
+		printf("컴퓨터 : 바위\n");
+	else
+		printf("컴퓨터 : 보\n");
+
+	switch (my_num) {
+		case 0:
+			if (com_num == 2) {
+				printf("win!\n");
+				win_count++;
+				}
+			else{
+				printf("lossㅠ.ㅠ\n");
+				loss_num++;
+				}
+			break;
+
+		case 1:
+			if (com_num == 0) {
+				printf("win!\n");
+				win_count++;
+				}
+			else{
+				printf("lossㅠ.ㅠ\n");
+				loss_num++;
+				}
+			break;
+
+		case 2:
+			if (com_num == 1) {
+				printf("win!\n");
+				win_count++;
+				}
+			else{
+				printf("lossㅠ.ㅠ\n");
+				loss_num++;
+				}
+			break;}
+	}
+
+	printf("---최종 스코어---\n");
+	if(win_count>=win_score)
+		printf("이겼습니다!\n");
+	else
+		printf("다음기회에. .TㅅT");
+
+ return 0;
+ }
