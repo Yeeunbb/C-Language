@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+//로또 프로그램
+int main(){
+	int a,b,c,d,e,f,bonus;//입력한값
+	int A,B,C,D,E,F,Bonus;//랜덤한 로또값
+	int count_1=0,count_2=0,count_3=0,count_4=0,count_5=0;//총 몇번 나온횟수
+	int count=0;//같은갯수
+	int AC=0,BC=0,CC=0,DC=0,EC=0,i=1;//각 등수가 처음 나온 횟수?
+
+	srand((unsigned)time(NULL));
+
+	fflush(stdout);
+	scanf("%d %d %d %d %d %d %d", &a,&b,&c,&d,&e,&f,&bonus);
+
+	while(count_1!=1)
+	{
+		A=rand()%45+1;
+		B=rand()%45+1;
+		C=rand()%45+1;
+		D=rand()%45+1;
+		E=rand()%45+1;
+		F=rand()%45+1;
+		Bonus=rand()%45+1;
+
+		while(B==A) B=rand()%45+1;
+		while(C==A || C==B) C=rand()%45+1;
+		while(D==A || D==B || D==C) D=rand()%45+1;
+		while(E==A || E==B || E==C || E==D) E=rand()%45+1;
+		while(F==A || F==B || F==C || F==D || F==E) F=rand()%45+1;
+		while(Bonus==A || Bonus==B || Bonus==C || Bonus==D || Bonus==E || Bonus==F) Bonus=rand()%45+1;
+
+		if(A==a || A==b || A==c || A==d || A==e || A==f) count++;
+		if(B==a || B==b || B==c || B==d || B==e || B==f) count++;
+		if(C==a || C==b || C==c || C==d || C==e || C==f) count++;
+		if(D==a || D==b || D==c || D==d || D==e || D==f) count++;
+		if(E==a || E==b || E==c || E==d || E==e || E==f) count++;
+		if(F==a || F==b || F==c || F==d || F==e || F==f) count++;
+
+		if(count==6)
+		{
+			count_1=1;
+			if(AC==0) AC=i;
+		}
+		if(count==5)
+		{
+			if(Bonus==bonus)
+			{
+				count_2++;
+				if(BC==0) BC=i;
+			}
+			else
+			{
+				count_3++;
+				if(CC==0) CC=i;
+			}
+		}
+		if(count==4)
+		{
+			count_4++;
+			if(DC==0) DC=i;
+		}
+		if(count==3)
+		{
+			count_5++;
+			if(EC==0) EC=i;
+		}
+		count=0;
+		i++;
+	}
+	printf("5등까지 들어간 돈 : %0.0lf원\n", EC*1000.0);
+	printf("4등까지 들어간 돈 : %0.0lf원\n", DC*1000.0);
+	printf("3등까지 들어간 돈 : %0.0lf원\n", CC*1000.0);
+	printf("2등까지 들어간 돈 : %0.0lf원\n", BC*1000.0);
+	printf("1등까지 들어간 돈 : %0.0lf원\n", AC*1000.0);
+	printf("\n");
+	printf("5등이 나온 횟수 : %d\n",count_5);
+	printf("4등이 나온 횟수 : %d\n",count_4);
+	printf("3등이 나온 횟수 : %d\n",count_3);
+	printf("2등이 나온 횟수 : %d\n",count_2);
+	printf("1등이 나온 횟수 : %d\n",count_1);
+
+	return 0;
+}
