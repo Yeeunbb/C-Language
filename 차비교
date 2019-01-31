@@ -1,0 +1,98 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2018. 10. 18.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class Car
+{
+public:
+	void setSpeed(int s)
+	{
+		speed = s;
+	}
+
+	int getSpeed()
+	{
+		return speed;
+	}
+
+	void setGear(int g)
+	{
+		gear = g;
+	}
+
+	int getGear()
+	{
+		return gear;
+	}
+
+	void setColor(string s)
+	{
+		color = s;
+	}
+
+	string getColor()
+	{
+		return color;
+	}
+
+	void init(int i, int n, string s)
+	{
+		speed = i;
+		gear = n;
+		color = s;
+	}
+
+	void show()
+	{
+		cout << "-------------------------------" << endl;
+		cout << "Speed: " << speed << endl;
+		cout << "Gear: " << gear << endl;
+		cout << "Color: " << color << endl;
+		cout << "-------------------------------" << endl;
+	}
+
+private:
+	int speed;
+	int gear;
+	string color;
+};
+int main()
+{
+	Car car1, car2;
+
+	srand(time(NULL));
+
+	cout << "============ CAR 1 ============" << endl;
+	car1.init(rand() % 200, 1, "red");
+	car1.show();
+
+	cout << "============ CAR 2 ============" << endl;
+	car2.init(rand() % 200, 1, "blue");
+	car2.show();
+
+	cout << endl;
+
+	cout << "============ Result ============" << endl;
+
+	if(car1.getSpeed() > car2.getSpeed())
+	{
+		cout << "Winner is CAR 1" << endl;
+	}
+
+	else
+	{
+		cout << "Winner is CAR 2" << endl;
+	}
+
+	return 0;
+}
