@@ -1,0 +1,67 @@
+/*
+ * constructor.cpp
+ * 생성자랑 소멸자는 앞에 return 타입이 없고, class 이름과 똑같다.
+ *  Created on: 2018. 11. 1.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class MyString
+{
+public:
+	MyString(const char* s = " ");
+
+	MyString(MyString& s),
+	~MyString();
+	void print();
+	int getSize();
+
+private:
+	char* pBuf;
+};
+
+int main()
+{
+	MyString str1;
+	MyString str2("Hello");
+	MyString str3("World");
+	MyString str4(str3);
+
+	str1.print();
+	str2.print();
+	str3.print();
+	str4.print();
+
+	return 0;
+}
+
+MyString::MyString(const char* s)
+{
+	pBuf = new char[strlen(s) + 1];
+	strcpy(pBuf, s);
+}
+
+MyString::MyString(MyString& s)
+{
+	pBuf = new char[strlen(s.pBuf)];
+	strcpy(pBuf, s.pBuf);
+}
+
+MyString::~MyString()
+{
+	delete[] pBuf;
+}
+
+void MyString::print()
+{
+	cout<<pBuf<<endl;
+}
+
+int getSize()
+{
+	//return strlen(pBuf);
+}
