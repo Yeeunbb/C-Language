@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Time
+{
+public:
+	Time();
+	Time(int hour, int minute, int second);
+	void print();
+
+private:
+	int hour;
+	int minute;
+	int second;
+
+};
+
+class AlarmClock
+{
+public:
+	AlarmClock(Time a, Time c);
+	void print();
+
+private:
+	Time currentTime;
+	Time alarmTime;
+
+};
+
+int main()
+{
+	Time alarm(6, 0, 0);
+	Time current(12, 56, 34);
+	AlarmClock timer(alarm, current); // 같은내용을 갖고있는 서로다른 두 객체임.
+
+	timer.print();
+
+	return 0;
+}
+
+Time::Time()
+{
+	hour = 0;
+	minute = 0;
+	second = 0;
+}
+
+Time::Time(int hour, int minute, int second)
+{
+	this-> hour = hour;
+	this-> minute = minute;
+	this-> second = second;
+}
+
+void Time::print()
+{
+	cout << hour <<"H "<< minute <<"M " << second << "S";
+}
+
+AlarmClock::AlarmClock(Time a, Time c)
+{
+	currentTime = c;
+	alarmTime = a;
+}
+
+void AlarmClock::print()
+{
+	cout << "Current time: ";
+	currentTime.print();
+	cout <<endl<< "Alarm time: ";
+	alarmTime.print();
+}
