@@ -1,0 +1,68 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 2018. 10. 18.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Product
+{
+public:
+	void input()
+	{
+		cout << "Serial Number of product: ";
+		cin >> SerialNumber;
+		cout << "Name of product: ";
+		cin >> Name;
+		cout << "Price of product: ";
+		cin >> Price;
+	}
+
+	void print()
+	{
+		cout << "Serial Number: " << SerialNumber << endl;
+		cout << "Name: " << Name << endl;
+		cout << "Price: " << Price <<endl;
+	}
+
+	bool isCheaper(Product a)
+	{
+		if(Price < a.Price)
+			return true;
+		else
+			return false;
+	}
+
+private:
+	int SerialNumber;
+	string Name;
+	int Price;
+};
+int main()
+{
+	Product p1, p2;
+
+	p1.input();
+	cout << "-------------------------------" << endl;
+
+	p2.input();
+
+	if(p1.isCheaper(p2))
+	{
+		p1.print();
+		cout << "p1 is more cheaper than p2" << endl;
+	}
+
+	else
+	{
+		p2.print();
+		cout << "p2 is more cheaper than p1" << endl;
+	}
+
+	return 0;
+}
