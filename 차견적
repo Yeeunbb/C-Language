@@ -1,0 +1,116 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Car
+{
+public:
+	Car(const int speed = 0, const int gear = 0, const string color = " white");
+	void setSpeed(const int speed);
+	int getSpeed();
+	void setGear(const int gear);
+	int getGear();
+	void setColor(const string color);
+	string getColor();
+	void speedUp(const int increment);
+	void speedDown(const int decrement);
+	void print();
+
+private:
+	int mSpeed;
+	int mGear;
+	string mColor;
+};
+
+class SportsCar: public Car
+{
+public:
+	void setTurbo(const bool value);
+	bool getTurbo();
+	void print();
+
+private:
+	bool mTurbo;
+};
+
+int main()
+{
+	SportsCar c;
+
+	c.setColor("Red");
+	c.setGear(3);
+	c.speedUp(100);
+	c.speedDown(30);
+	c.setTurbo(true);
+	c.print();
+
+	return 0;
+}
+
+Car::Car(const int speed, const int gear, const string color)
+{
+	setSpeed(speed);
+	setGear(gear);
+	setColor(color);
+}
+
+void Car::setSpeed(const int speed)
+{
+	mSpeed = speed;
+}
+
+int Car::getSpeed()
+{
+	return mSpeed;
+}
+void Car::setGear(const int gear)
+{
+	mGear = gear;
+}
+
+int Car::getGear()
+{
+	return mGear;
+}
+void Car::setColor(const string color)
+{
+	mColor = color;
+}
+
+string Car::getColor()
+{
+	return mColor;
+}
+void Car::speedUp(const int increment)
+{
+	mSpeed = mSpeed + increment;
+}
+
+void Car::speedDown(const int decrement)
+{
+	mSpeed = mSpeed - decrement;
+}
+
+void SportsCar::setTurbo(const bool value)
+{
+	mTurbo = value;
+}
+
+bool SportsCar::getTurbo()
+{
+	return mTurbo;
+}
+
+void SportsCar::print()
+{
+	cout<<"Turbo: " <<getTurbo();
+}
+void Car::print()
+{
+	cout<<"==============="<<endl;
+	cout<<"Speed = " <<getSpeed()<<endl;
+	cout<<"Gear = "<<getGear()<<endl;
+	cout<<"Color = "<<getColor() << endl;
+	cout<<"===============";
+}
