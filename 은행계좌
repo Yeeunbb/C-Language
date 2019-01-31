@@ -1,0 +1,118 @@
+/*
+ * 201800929_김예은.cpp
+ *
+ *  Created on: 2018. 11. 19.
+ *      Author: ykoou
+ */
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount
+{//은행계좌class.
+public:
+	static double rate; //정적멤버변수 rate를 선언해준다.
+	BankAccount(); //생성자 BankAccount.
+	void setBalance(const double balance); //잔액을 입력하는 함수
+	double getBalance(); //잔액을 호출하는 함수
+	void setName(const string name); //소유주 이름을 입력받는 함수
+	string getName(); //소유주 이름을 호출하는 함수
+	void setAccountNumber(const string n); //계좌번호를 입력받는 함수
+	string getAccountNumber(); //계좌번호를 호출하는 함수
+	void print(); //정보를 출력하는 함수
+	void rateCalculation(); //12개월 연이율을 계산하는 함수
+	void rateCalculation(int n); //n개월치 연이율을 계산하는 함수
+
+private:
+	double balance; //잔액
+	string name; //소유주
+	string accountNumber; //계좌번호
+
+};
+
+double BankAccount::rate = 5; //이자율은 5%로 한다.
+
+int main()
+{
+	BankAccount myBank;
+
+	double i; //잔액을 입력받을 변수
+	string c1, c2; //소유주 이름과 계좌번호를 입력받을 변수
+
+	myBank.print(); //생성자 초기값이 잘 나오는 지 확인.
+
+	cout << "소유주이름 : ";
+	cin >> c1;
+	myBank.setName(c1); //소유주이름을 입력받음.
+
+	cout << "계좌번호 : ";
+	cin >> c2;
+	myBank.setAccountNumber(c2); //계좌번호를 입력받음.
+
+	cout << "잔액 : ";
+	cin >> i;
+	myBank.setBalance(i); //잔액을 입력받음.
+
+	myBank.rateCalculation(7); //7개월치 이자를 계산하여 잔액에 더하여줌.
+
+	myBank.print(); //정보를 출력
+
+	return 0;
+}
+
+BankAccount::BankAccount()
+{ //생성자. 초기화값을 지정해준다.
+	balance = 1000000;
+	name = "김예은";
+	accountNumber = "12345-6789";
+}
+void BankAccount::setBalance(const double balance)
+{ //잔액을 입력받는다.
+	this->balance = balance;
+}
+
+double BankAccount::getBalance()
+{ //잔액을 호출한다.
+	return balance;
+}
+
+void BankAccount::setName(const string name)
+{ //소유주 이름을 입력받는다.
+	this->name = name;
+}
+
+string BankAccount::getName()
+{ //소유주 이름을 호출한다.
+	return name;
+}
+
+void BankAccount::setAccountNumber(const string n)
+{ //계좌번호를 입력받는다.
+	accountNumber = n;
+}
+
+string BankAccount::getAccountNumber()
+{ //계좌번호를 호출한다.
+	return accountNumber;
+}
+
+void BankAccount::print()
+{ //정보를 출력한다.
+	cout << "===================="<< endl;
+	cout << "소유주 이름: " << getName() << endl;
+	cout << "계좌번호: " << getAccountNumber() << endl;
+	cout << "잔액: " << (int)getBalance() << "원" << endl;
+	cout << "===================="<< endl;
+}
+
+void BankAccount::rateCalculation()
+{ //1년치 연이율을 계산(원금 = 원금  + 원금*연이율*0.01)
+	balance = balance + balance * (rate*0.01);
+}
+
+void BankAccount::rateCalculation(int n)
+{ //n개월치 연이율을 계산(원금 = 원금 + 원금 * 이자율 * 0.01 * n / 12.0)
+	balance = balance + balance * (rate*0.01) * (n / 12.0);
+}
