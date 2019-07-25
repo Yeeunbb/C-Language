@@ -77,3 +77,4 @@ void evenMask(int* element, bool even)
 	else
 		*element = 0;
 }
+
