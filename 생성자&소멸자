@@ -1,10 +1,3 @@
-/*
- * constructor.cpp
- * 생성자랑 소멸자는 앞에 return 타입이 없고, class 이름과 똑같다.
- *  Created on: 2018. 11. 1.
- *      Author: ykoou
- */
-
 #include <iostream>
 #include <cstring>
 
