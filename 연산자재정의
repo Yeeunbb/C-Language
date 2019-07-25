@@ -38,6 +38,7 @@ void String::display()
 	cout << str1;
 }
 
+
 int main()
 {
 	String c1("안녕"), c2("난예은"), c3;
