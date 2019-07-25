@@ -72,3 +72,4 @@ void AlarmClock::print()
 	cout <<endl<< "Alarm time: ";
 	alarmTime.print();
 }
+
