@@ -1,11 +1,3 @@
-/*
- * array.cpp
- *
- *  Created on: 2018. 9. 13.
- *      Author: ykoou
- */
-
-
 #include <iostream>
 
 using namespace std;
