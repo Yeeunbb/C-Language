@@ -1,10 +1,3 @@
-/*
- * structure.cpp
- *
- *  Created on: 2018. 9. 27.
- *      Author: ykoou
- */
-
 #include<iostream>
 #include<cstring>
 
