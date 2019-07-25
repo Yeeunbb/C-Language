@@ -1,9 +1,3 @@
-/*
- * swap.cpp
- *
- *  Created on: 2018. 9. 18.
- *      Author: ykoou
- */
 #include <iostream>
 using namespace std;
 void swap (int *px, int *py);
